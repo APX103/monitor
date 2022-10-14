@@ -143,6 +143,7 @@ func main() {
 	token := flag.String("token", "wnk9mEaeN6GH4ky3E6T48ED8qwqRq3sn0PsoycRxY01gLOqsEhLc3y2z0INJjHsumIyWfZ3kNann6YnZJRqpPA==", "API token of influxdb2")
 	url := flag.String("url", "http://localhost:8086", "Url of influxdb2")
 
+	flag.Parse()
 	client := InfluxClient{
 		bucket: *bucket,
 		org:    *org,
