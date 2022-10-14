@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"context"
+	"flag"
 	"fmt"
 	"os/exec"
 	"regexp"
@@ -101,8 +102,8 @@ func GetGpuInfo() GpuInfo {
 		GpuUtilization:    Str2Num(r[3]),
 		GpuMemUtilization: Str2Num(r[4]),
 		GpuMemTotal:       Str2Num(r[0]),
-		GpuMemUsed:        Str2Num(r[1]),
-		GpuMemFree:        Str2Num(r[2]),
+		GpuMemUsed:        Str2Num(r[2]),
+		GpuMemFree:        Str2Num(r[1]),
 	}
 }
 
@@ -137,11 +138,16 @@ func UpdateToInflux(p *InfluxClient) {
 
 // influx setup --username lijialun --password pjlab666 --org pjlab --bucket monitor
 func main() {
+	bucket := flag.String("bucket", "monitor", "Name of bucket of influxdb2")
+	org := flag.String("org", "pjlab", "Name of org of influxdb2")
+	token := flag.String("token", "wnk9mEaeN6GH4ky3E6T48ED8qwqRq3sn0PsoycRxY01gLOqsEhLc3y2z0INJjHsumIyWfZ3kNann6YnZJRqpPA==", "API token of influxdb2")
+	url := flag.String("url", "http://localhost:8086", "Url of influxdb2")
+
 	client := InfluxClient{
-		bucket: "monitor",
-		org:    "pjlab",
-		token:  "wnk9mEaeN6GH4ky3E6T48ED8qwqRq3sn0PsoycRxY01gLOqsEhLc3y2z0INJjHsumIyWfZ3kNann6YnZJRqpPA==",
-		url:    "http://localhost:8086",
+		bucket: *bucket,
+		org:    *org,
+		token:  *token,
+		url:    *url,
 	}
 	UpdateToInflux(&client)
 }
