@@ -1,4 +1,4 @@
-# monitor
+# GPU server monitor
 
 > A mini program for monitor GPU server
 
