@@ -144,7 +144,7 @@ func UpdateToInflux(p *InfluxClient) {
 			time.Now())
 		writeAPI.WritePoint(context.Background(), q)
 		time.Sleep(time.Second * 4)
-		fmt.Println("It's running")
+		// fmt.Println("It's running")
 	}
 
 }
