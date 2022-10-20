@@ -74,7 +74,13 @@ func GetGpuInfo() GpuInfo {
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		fmt.Printf("Error:can not obtain stdout pipe for command:%s\nmaybe because there is no nvidia-smi", err)
-		panic("Err run ")
+		return GpuInfo{
+			GpuUtilization:    0,
+			GpuMemUtilization: 0,
+			GpuMemTotal:       0,
+			GpuMemUsed:        0,
+			GpuMemFree:        0,
+		}
 	}
 
 	if err := cmd.Start(); err != nil {
@@ -137,7 +143,7 @@ func UpdateToInflux(p *InfluxClient) {
 				"GpuMemFree":        gpuinfo.GpuMemFree},
 			time.Now())
 		writeAPI.WritePoint(context.Background(), q)
-		time.Sleep(time.Second * 2)
+		time.Sleep(time.Second * 4)
 		fmt.Println("It's running")
 	}
 
