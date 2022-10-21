@@ -74,25 +74,12 @@ func GetGpuInfo() GpuInfo {
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		fmt.Printf("Error:can not obtain stdout pipe for command:%s\nmaybe because there is no nvidia-smi", err)
-		return GpuInfo{
-			GpuUtilization:    0,
-			GpuMemUtilization: 0,
-			GpuMemTotal:       0,
-			GpuMemUsed:        0,
-			GpuMemFree:        0,
-		}
+		panic("Error")
 	}
 
 	if err := cmd.Start(); err != nil {
 		fmt.Println("Error:The command is err,", err)
-		// panic("The command is err")
-		return GpuInfo{
-			GpuUtilization:    0,
-			GpuMemUtilization: 0,
-			GpuMemTotal:       0,
-			GpuMemUsed:        0,
-			GpuMemFree:        0,
-		}
+		panic("The command is err")
 	}
 
 	outputBuf := bufio.NewReader(stdout)
