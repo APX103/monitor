@@ -83,6 +83,7 @@ func GetGpuInfo() GpuInfo {
 	outputBuf := bufio.NewReader(stdout)
 	outputBuf.ReadLine()
 	output, _, err := outputBuf.ReadLine()
+	cmd.Wait()
 	if err != nil {
 		if err.Error() != "EOF" {
 			fmt.Printf("Error :%s\n", err)
