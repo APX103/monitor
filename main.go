@@ -16,8 +16,6 @@ import (
 	"github.com/shirou/gopsutil/v3/cpu"
 )
 
-var m string = "10.1.52.78"
-
 type InfluxClient struct {
 	bucket string
 	org    string
