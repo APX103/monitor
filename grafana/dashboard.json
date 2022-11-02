@@ -24,14 +24,14 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 4,
+    "id": 6,
     "links": [],
     "liveNow": false,
     "panels": [
         {
             "datasource": {
                 "type": "influxdb",
-                "uid": "LDiWjcS4z"
+                "uid": "8pRFtpSVz"
             },
             "fieldConfig": {
                 "defaults": {
@@ -108,27 +108,27 @@
                 {
                     "datasource": {
                         "type": "influxdb",
-                        "uid": "LDiWjcS4z"
+                        "uid": "8pRFtpSVz"
                     },
-                    "query": "from(bucket:\"monitor\")\n    |> range(start: -1h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuMemFree\")",
+                    "query": "from(bucket:\"monitor\")\n    |> range(start: -72h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuMemFree\")\n    |> aggregateWindow(every: 60s, fn: mean)",
                     "refId": "A"
                 },
                 {
                     "datasource": {
                         "type": "influxdb",
-                        "uid": "LDiWjcS4z"
+                        "uid": "8pRFtpSVz"
                     },
                     "hide": false,
-                    "query": "from(bucket:\"monitor\")\n    |> range(start: -1h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuMemUsed\")",
+                    "query": "from(bucket:\"monitor\")\n    |> range(start: -72h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuMemUsed\")\n    |> aggregateWindow(every: 60s, fn: mean)",
                     "refId": "B"
                 },
                 {
                     "datasource": {
                         "type": "influxdb",
-                        "uid": "LDiWjcS4z"
+                        "uid": "8pRFtpSVz"
                     },
                     "hide": false,
-                    "query": "from(bucket:\"monitor\")\n    |> range(start: -1h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuMemTotal\")",
+                    "query": "from(bucket:\"monitor\")\n    |> range(start: -72h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuMemTotal\")\n    |> aggregateWindow(every: 60s, fn: mean)",
                     "refId": "C"
                 }
             ],
@@ -138,7 +138,7 @@
         {
             "datasource": {
                 "type": "influxdb",
-                "uid": "LDiWjcS4z"
+                "uid": "8pRFtpSVz"
             },
             "fieldConfig": {
                 "defaults": {
@@ -215,9 +215,9 @@
                 {
                     "datasource": {
                         "type": "influxdb",
-                        "uid": "LDiWjcS4z"
+                        "uid": "8pRFtpSVz"
                     },
-                    "query": "from(bucket:\"monitor\")\n    |> range(start: -1h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuUtilization\")",
+                    "query": "from(bucket:\"monitor\")\n    |> range(start: -48h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuUtilization\")\n   |> aggregateWindow(every: 60s, fn: mean)",
                     "refId": "A"
                 }
             ],
@@ -227,7 +227,7 @@
         {
             "datasource": {
                 "type": "influxdb",
-                "uid": "LDiWjcS4z"
+                "uid": "8pRFtpSVz"
             },
             "fieldConfig": {
                 "defaults": {
@@ -304,9 +304,9 @@
                 {
                     "datasource": {
                         "type": "influxdb",
-                        "uid": "LDiWjcS4z"
+                        "uid": "8pRFtpSVz"
                     },
-                    "query": "from(bucket:\"monitor\")\n    |> range(start: -1h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuMemUtilization\")",
+                    "query": "from(bucket:\"monitor\")\n    |> range(start: -72h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"GpuMemUtilization\")\n   |> aggregateWindow(every: 60s, fn: mean)",
                     "refId": "A"
                 }
             ],
@@ -316,7 +316,7 @@
         {
             "datasource": {
                 "type": "influxdb",
-                "uid": "LDiWjcS4z"
+                "uid": "8pRFtpSVz"
             },
             "fieldConfig": {
                 "defaults": {
@@ -393,9 +393,9 @@
                 {
                     "datasource": {
                         "type": "influxdb",
-                        "uid": "LDiWjcS4z"
+                        "uid": "8pRFtpSVz"
                     },
-                    "query": "from(bucket:\"monitor\")\n    |> range(start: -1h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"CpuPercent\")",
+                    "query": "from(bucket:\"monitor\")\n    |> range(start: -72h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"CpuPercent\")\n   |> aggregateWindow(every: 60s, fn: mean)",
                     "refId": "A"
                 }
             ],
@@ -405,7 +405,7 @@
         {
             "datasource": {
                 "type": "influxdb",
-                "uid": "LDiWjcS4z"
+                "uid": "8pRFtpSVz"
             },
             "fieldConfig": {
                 "defaults": {
@@ -482,9 +482,9 @@
                 {
                     "datasource": {
                         "type": "influxdb",
-                        "uid": "LDiWjcS4z"
+                        "uid": "8pRFtpSVz"
                     },
-                    "query": "from(bucket:\"monitor\")\n    |> range(start: -1h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"MemPercent\")",
+                    "query": "from(bucket:\"monitor\")\n    |> range(start: -72h)\n    |> filter(fn: (r) => r._measurement == \"server_stat\" and r._field == \"MemPercent\")\n   |> aggregateWindow(every: 60s, fn: mean)",
                     "refId": "A"
                 }
             ],
@@ -492,7 +492,7 @@
             "type": "timeseries"
         }
     ],
-    "refresh": "5s",
+    "refresh": false,
     "schemaVersion": 37,
     "style": "dark",
     "tags": [],
@@ -505,8 +505,8 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "the monitor Copy",
-    "uid": "GXV_35S4k",
-    "version": 1,
+    "title": "the monitor- windows - 47.101.133.33",
+    "uid": "GXV_35S4j",
+    "version": 3,
     "weekStart": ""
 }
